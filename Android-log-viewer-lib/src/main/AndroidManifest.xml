@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity android:name=".ui.list.LogViewerListActivity"/>
+        <activity android:name=".ui.LogViewerActivity"/>
         <activity android:name=".ui.detail.LogViewerDetailActivity"/>
     </application>
 </manifest>

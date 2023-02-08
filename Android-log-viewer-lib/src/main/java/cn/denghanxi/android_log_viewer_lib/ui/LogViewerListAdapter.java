@@ -1,4 +1,4 @@
-package cn.denghanxi.android_log_viewer_lib.ui.list;
+package cn.denghanxi.android_log_viewer_lib.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package cn.denghanxi.android_log_viewer_lib.ui.list;
+package cn.denghanxi.android_log_viewer_lib.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,10 +39,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
  *     }
  * </pre>
  */
-public class LogViewerListActivity extends AppCompatActivity {
+public class LogViewerActivity extends AppCompatActivity {
     public static final String FILE_PATH_KEY = "cn.denghanxi.android_log_viewer_lib.filePath";
 
-    private final Logger logger = LoggerFactory.getLogger(LogViewerListActivity.class);
+    private final Logger logger = LoggerFactory.getLogger(LogViewerActivity.class);
     private final CompositeDisposable disposables = new CompositeDisposable();
     private final LogViewerListAdapter adapter = new LogViewerListAdapter();
 

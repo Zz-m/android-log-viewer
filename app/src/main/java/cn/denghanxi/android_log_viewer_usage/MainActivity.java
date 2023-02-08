@@ -9,9 +9,7 @@ import android.widget.Button;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-
-import cn.denghanxi.android_log_viewer_lib.ui.list.LogViewerListActivity;
+import cn.denghanxi.android_log_viewer_lib.ui.LogViewerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = findViewById(R.id.btn_to_log_viewer);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LogViewerListActivity.class);
+            Intent intent = new Intent(this, LogViewerActivity.class);
             String logDirPath = getFilesDir().getAbsolutePath() + "/log";
-            intent.putExtra(LogViewerListActivity.FILE_PATH_KEY, logDirPath);
+            intent.putExtra(LogViewerActivity.FILE_PATH_KEY, logDirPath);
             startActivity(intent);
         });
     }
