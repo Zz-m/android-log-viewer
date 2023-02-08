@@ -28,6 +28,17 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
+/**
+ * Usage:
+ * <pre>
+ *     {@code
+ *             Intent intent = new Intent(this, LogViewerListActivity.class);
+ *             String logDirPath = getFilesDir().getAbsolutePath() + "/log";
+ *             intent.putExtra(LogViewerListActivity.FILE_PATH_KEY, logDirPath);
+ *             startActivity(intent);
+ *     }
+ * </pre>
+ */
 public class LogViewerListActivity extends AppCompatActivity {
     public static final String FILE_PATH_KEY = "cn.denghanxi.android_log_viewer_lib.filePath";
 
