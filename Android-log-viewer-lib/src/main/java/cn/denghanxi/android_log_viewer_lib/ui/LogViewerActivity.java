@@ -3,9 +3,11 @@ package cn.denghanxi.android_log_viewer_lib.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -22,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-
 import cn.denghanxi.android_log_viewer_lib.R;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -32,7 +33,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
  * Usage:
  * <pre>
  *     {@code
- *             Intent intent = new Intent(this, LogViewerListActivity.class);
+ *             Intent intent = new Intent(this, LogViewerActivity.class);
  *             String logDirPath = getFilesDir().getAbsolutePath() + "/log";
  *             intent.putExtra(LogViewerListActivity.FILE_PATH_KEY, logDirPath);
  *             startActivity(intent);
@@ -84,6 +85,13 @@ public class LogViewerActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_log_viewer_list);
+        // setup the action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        } else {
+            logger.warn("action bar is null, so disable default navigate up.");
+        }
 
         viewModel = new ViewModelProvider(this).get(LogViewerListViewModel.class);
 
@@ -104,6 +112,15 @@ public class LogViewerActivity extends AppCompatActivity {
         disposables.add(viewModel.loadLogFiles(logFileDir).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(adapter::updateData, e -> logger.error("list log file err.", e)));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

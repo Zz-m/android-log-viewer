@@ -4,7 +4,7 @@ This is a simple library to view the Android application's log.
 Example:
 ### Gradle
 
-`implementation 'cn.denghanxi:android-log-viewer:0.0.1'`
+`implementation 'cn.denghanxi:android-log-viewer:0.0.2'`
 
 
 Then in your activity:
